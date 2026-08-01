@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+<title>
+धनदायी CSP - Daily Report
+</title>
+
+
+<link rel="stylesheet"
+href="reports.css">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+<header class="report-header">
+
+
+<div>
+
+<h1>
+<i class="fa-solid fa-file-invoice-dollar"></i>
+
+धनदाई एंटरप्रायझेस</strong> —फिनो पेमेंट & महाराष्ट्र बँक  Cash Manager
+
+</h1>
+
+
+<p>
+Daily Transaction Report
+</p>
+
+
+</div>
+
+
+<button onclick="window.location.href='index.html'">
+
+<i class="fa fa-arrow-left"></i>
+
+Dashboard
+
+</button>
+
+
+</header>
+
+
+
+
+<section class="filter-section">
+
+
+<h2>
+📅 Report Filter
+</h2>
+
+
+<div class="filter-box">
+
+
+<div>
+
+<label>
+Report Date
+</label>
+
+
+<input 
+type="date"
+id="reportDate">
+
+
+</div>
+
+
+
+
+<div>
+
+<label>
+Bank Filter
+</label>
+
+
+<select id="bankFilter">
+
+
+<option value="ALL">
+
+सर्व बँक
+
+</option>
+
+
+<option value="FINO">
+
+Fino Payment Bank
+
+</option>
+
+
+<option value="BOM">
+
+Bank of Maharashtra
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+<button id="viewReport">
+
+
+<i class="fa fa-search"></i>
+
+View Report
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="report-dashboard">
+
+
+<div class="report-card blue">
+
+
+<h3>
+Opening Cash
+</h3>
+
+
+<h2 id="reportOpening">
+
+₹0
+
+</h2>
+
+
+</div>
+
+
+
+<div class="report-card green">
+
+
+<h3>
+Closing Cash
+</h3>
+
+
+<h2 id="reportClosing">
+
+₹0
+
+</h2>
+
+
+</div>
+
+
+
+
+<div class="report-card red">
+
+
+<h3>
+Withdrawal
+</h3>
+
+
+<h2 id="reportWithdrawal">
+
+₹0
+
+</h2>
+
+
+</div>
+
+
+
+
+<div class="report-card orange">
+
+
+<h3>
+Deposit
+</h3>
+
+
+<h2 id="reportDeposit">
+
+₹0
+
+</h2>
+
+
+</div>
+
+
+
+<div class="report-card purple">
+
+
+<h3>
+Service Charges
+</h3>
+
+
+<h2 id="reportCharges">
+
+₹0
+
+</h2>
+
+
+</div>
+
+
+
+
+<div class="report-card">
+
+
+<h3>
+Transactions
+</h3>
+
+
+<h2 id="reportCount">
+
+0
+
+</h2>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<section class="transaction-report">
+
+
+<div class="report-actions">
+
+<button id="downloadPDF">
+
+    <i class="fa fa-file-excel"></i>
+
+    Download PDF
+
+</button>
+<button id="printReport">
+
+
+<i class="fa fa-print"></i>
+
+Print Report
+
+</button>
+
+
+
+<button id="downloadExcel">
+
+
+<i class="fa fa-file-excel"></i>
+
+Download Excel
+
+</button>
+
+
+</div>
+
+
+
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+दिनांक
+</th>
+<th>
+Time
+</th>
+
+
+<th>
+Bank
+</th>
+
+
+<th>
+Type
+</th>
+
+
+<th>
+Customer
+</th>
+
+
+<th>
+Amount
+</th>
+
+
+<th>
+Charges
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+<tbody id="reportTable">
+
+
+</tbody>
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+<footer>
+
+<p>
+
+धनदाई एंटरप्रायझेस</strong> —फिनो पेमेंट & महाराष्ट्र बँक  Cash Manager
+
+<br>
+
+ धनदाई एंटरप्रायझेस</strong> फिनो पेमेंट बँक, </p>
+        <p>महाराष्ट्र बँक ग्राहक सेवा  केंद्, महालपाटणे ४२३२१३
+
+</p>
+
+</footer>
+
+
+
+
+<script src="reports.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+
+</body>
+
+
+</html>
