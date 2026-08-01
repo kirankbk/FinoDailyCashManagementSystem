@@ -264,7 +264,27 @@ debugger
 
         transactions =
             JSON.parse(data);
+			
+			
+	//const today = new Date().toISOString().split("T")[0];
+	 let today =
+    getPreviousDate();
 
+
+   const todayTransactions = transactions.filter(item => item.date === today);
+   
+   const calprevdaycharged =calculateSummary(todayTransactions, formatMoney(openingCash));
+
+
+     setValue(
+        "PrevioustransactionCount",
+        todayTransactions.length
+    );
+   
+     setValue(
+        "carryForwardPrevdayCharges",
+        calprevdaycharged.totalCharges
+    );
 
     }
 
@@ -822,11 +842,7 @@ document
 .addEventListener(
 "click",
 function(){
- localStorage.getItem(
 
-            STORAGE_KEYS.TRANSACTIONS
-
-        );
 debugger
     let calculation = calculateCash();
 
@@ -846,6 +862,134 @@ debugger
         localStorage.getItem("dailyHistory")
     ) || [];
 
+let withdrawal=0;
+
+    let deposit=0;
+
+    let upi=0;
+
+    let charges=0;
+
+
+
+    transactions.forEach(
+
+        function(item){
+
+
+
+            charges +=
+
+            Number(item.charge);
+
+
+
+            switch(item.type){
+
+
+
+                case "withdrawal":
+
+                    withdrawal +=
+
+                    Number(item.amount);
+
+                    break;
+
+
+
+                case "deposit":
+
+                    deposit +=
+
+                    Number(item.amount);
+
+                    break;
+
+
+
+                case "upi":
+
+                    upi +=
+
+                    Number(item.amount);
+
+                    break;
+
+
+
+            }
+
+
+
+        }
+
+    );
+
+
+
+    setValue(
+        "totalWithdrawal",
+        withdrawal
+    );
+
+
+
+    setValue(
+        "totalDeposit",
+        deposit
+    );
+
+
+
+    setValue(
+        "totalUPI",
+        upi
+    );
+
+
+
+    setValue(
+        "totalCharges",
+        charges
+    );
+
+
+
+    setValue(
+        "chargesCard",
+        charges
+    );
+
+
+
+    setValue(
+        "eodOpening",
+        openingCash
+    );
+
+
+
+    setValue(
+        "eodClosing",
+        getCurrentCash()
+    );
+
+
+
+    setValue(
+        "eodCharges",
+        charges
+    );
+
+
+
+    setValue(
+        "eodTransactions",
+        transactions.length
+    );
+
+
 
 
     let eodData = {
@@ -855,23 +999,23 @@ debugger
 
 
         openingCash:
-        opening.openingCash,
+        openingCash,
 
 
-        closingCash:
-        calculation.cash,
+        closingCash: getCurrentCash(),
+        
 
 
         todayCharges:
-        calculation.todayCharges,
+        charges,
 
 
         totalCharges:
-        totalCharges,
+        charges,
 
 
         carryForwardCharges:
-        totalCharges
+        charges
 
 
     };
@@ -954,7 +1098,7 @@ function getTodayOpening(){
 
 function calculateCash(){
 
-
+debugger
 
     let opening =
     getTodayOpening();
@@ -1179,13 +1323,47 @@ debugger
 
 
 }
+
+
+function getPreviousTransactions(){
+debugger
+
+
+    let transactions =
+    JSON.parse(
+        localStorage.getItem(
+             STORAGE_KEYS.TRANSACTIONS
+        )
+    ) || [];
+
+
+
+    let prevtoday =
+    getPreviousDate();
+
+
+
+    return transactions.filter(
+        function(item){
+
+
+            return item.date === prevtoday;
+
+
+        }
+    );
+
+
+}
+
+
 // =======================================
 // DAILY CASH MANAGEMENT
 // =======================================
 
 
 function loadPreviousDayData(){
-
+debugger
 
 let history =
 JSON.parse(
@@ -1204,7 +1382,10 @@ setValue(
         "previousDayCash",
         lastDay.closingCash
     );
-
+setValue(
+        "carryForwardCharges",
+        lastDay.carryForwardCharges
+    );
 
 // document.getElementById(
 // "previousDayCash"
@@ -1241,7 +1422,76 @@ setValue(
 }
 
 }
+function calculateSummary(filteredTransactions, openingCash) {
 
+    let totalWithdrawal = 0;
+    let totalDeposit = 0;
+    let totalUPI = 0;
+    let totalCashIn = 0;
+    let totalCashOut = 0;
+    let totalCharges = 0;
+
+    filteredTransactions.forEach(item => {
+
+        const amount = Number(item.amount || 0);
+        const charge = Number(item.charge || 0);
+
+        totalCharges += charge;
+
+        switch(item.type){
+
+            case "withdrawal":
+                totalWithdrawal += amount;
+                break;
+
+            case "deposit":
+                totalDeposit += amount;
+                break;
+
+            case "upi":
+                totalUPI += amount;
+                break;
+
+            case "cashin":
+                totalCashIn += amount;
+                break;
+
+            case "cashout":
+                totalCashOut += amount;
+                break;
+        }
+
+    });
+
+    const remainingCash =
+        openingCash
+        + totalDeposit
+        + totalCashIn
+        - totalWithdrawal
+        - totalUPI
+        - totalCashOut;
+
+    return {
+
+        totalTransactions: filteredTransactions.length,
+
+        totalWithdrawal,
+
+        totalDeposit,
+
+        totalUPI,
+
+        totalCashIn,
+
+        totalCashOut,
+
+        totalCharges,
+
+        remainingCash
+
+    };
+
+}
 
 
 
@@ -1570,14 +1820,32 @@ function addTransaction(){
    updateReports();
     clearTransactionForm();
 
-
-
-    alert(
-        "व्यवहार यशस्वीपणे सेव्ह झाला"
+confirm(
+        "व्यवहार यशस्वीपणे सेव्ह झाला आहे"
     );
 
 
+    // alert(
+        // "व्यवहार यशस्वीपणे सेव्ह झाला"
+    // );
 
+
+
+}
+function getPreviousDate() {
+
+    const date = new Date();
+
+    // Go to previous day
+    date.setDate(date.getDate() - 1);
+
+    const year = date.getFullYear();
+
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
 }
 
 function getCurrentDate() {
@@ -1752,7 +2020,7 @@ document
 
 function loadTransactionTable(){
 
-
+debugger
     let tbody =
 
     document.getElementById(

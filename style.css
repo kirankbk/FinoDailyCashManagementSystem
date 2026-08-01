@@ -33,6 +33,50 @@ body{
 
 }
 
+.card-title{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:10px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.info-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.label{
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.value{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:black;
+
+}
 
 /* =========================================================
    VARIABLES
