@@ -37,7 +37,10 @@ document.addEventListener("DOMContentLoaded", function(){
 function loadApplication(){
 
 debugger
-    showTodayDate();
+   // showTodayDate();
+  // loadOpeningCharges();
+
+   updateTodayDate();
 
 
     loadOpeningCash();
@@ -50,44 +53,83 @@ debugger
 
 
 }
+//opening charges
+function loadOpeningCharges() {
 
+    const previousCharges = getPreviousDayCharges();
 
+    document.getElementById("previousDayCharges").innerHTML =
+        Number(previousCharges);
 
-// =========================================================
-// SHOW TODAY DATE
-// =========================================================
+    document.getElementById("currentChargesCard").innerHTML =
+        Number(previousCharges);
 
-function showTodayDate(){
+    localStorage.setItem("openingCharges", previousCharges);
+}
 
+function logout() {
 
-    const dateElement =
-        document.getElementById("todayDate");
+    if (confirm("Are you sure you want to logout?")) {
 
+        localStorage.removeItem("loggedUser");
 
-    if(dateElement){
-
-
-        let today = new Date();
-
-
-        let date = today.toLocaleDateString(
-            "mr-IN",
-            {
-                day:"2-digit",
-                month:"long",
-                year:"numeric"
-            }
-        );
-
-
-        dateElement.innerHTML =
-            "📅 " + date;
-
+        window.location.href = "index.html";
 
     }
 
-
 }
+// =========================================================
+// SHOW TODAY DATE
+// =========================================================
+function updateTodayDate() {
+
+    const today = new Date();
+
+    const dayName = new Intl.DateTimeFormat("mr-IN", {
+        weekday: "long"
+    }).format(today);
+
+    const date = new Intl.DateTimeFormat("mr-IN", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+    }).format(today);
+
+    document.getElementById("todayDate").innerHTML =
+        `📅 ${dayName}, ${date}`;
+}
+
+// function showTodayDate(){
+
+
+    // const dateElement =
+        // document.getElementById("todayDate");
+
+
+    // if(dateElement){
+
+
+        // let today = new Date();
+
+
+        // let date = today.toLocaleDateString(
+            // "mr-IN",
+            // {
+                // day:"2-digit",
+                // month:"long",
+                // year:"numeric"
+            // }
+        // );
+
+
+        // dateElement.innerHTML =
+            // "📅 " + date;
+
+
+    // }
+
+
+// }
 
 
 
@@ -100,6 +142,9 @@ const STORAGE_KEYS = {
 
     OPENING_CASH:
         "dhanadayi_opening_cash",
+		
+		 CURRENT_CASH:
+        "currenticash_cash",
 
 
     TRANSACTIONS:
@@ -128,7 +173,7 @@ if(saveOpeningBtn){
         "click",
         function(){
 
-
+debugger
             let amount =
             Number(
                 document.getElementById(
@@ -136,34 +181,27 @@ if(saveOpeningBtn){
                 ).value
             );
 
+           
+const cashValidation = validateUpdatingBalance(amount);
+
+if (!cashValidation.success) {
+
+    alert(cashValidation.message);
+
+    return;
+
+}
 
 
-            if(!amount || amount<=0){
+     openingCash = amount;
 
+	localStorage.setItem(
 
-                alert(
-                    "कृपया सुरुवातीची रोकड भरा"
-                );
+		STORAGE_KEYS.OPENING_CASH,
 
+		amount
 
-                return;
-
-
-            }
-
-
-
-            openingCash = amount;
-
-
-
-            localStorage.setItem(
-
-                STORAGE_KEYS.OPENING_CASH,
-
-                amount
-
-            );
+	);
 
 
 
@@ -171,7 +209,7 @@ if(saveOpeningBtn){
 
 
 
-            alert(
+            showToast(
                 "Opening Cash Saved Successfully"
             );
 
@@ -192,6 +230,14 @@ debugger
 
 }
 
+function redirectReportcscMahaonline() {
+debugger
+    
+        window.location.href = "cscmahaonline.html";
+
+    
+
+}
 // =========================================================
 // LOAD OPENING CASH
 // =========================================================
@@ -209,6 +255,15 @@ function loadOpeningCash(){
         );
 
 
+if (Number(savedCash) <= 0) {
+
+    alert(
+        "❌ Opening Cash उपलब्ध नाही.\n\nकृपया प्रथम Opening Cash भरा."
+    );
+
+    return;
+
+}
 
     if(savedCash){
 
@@ -416,7 +471,7 @@ function getCurrentCash(){
 
 function updateDashboard(){
 
-
+debugger
 
     let currentCash =
         getCurrentCash();
@@ -453,6 +508,7 @@ function updateDashboard(){
 
     if(currentCard){
 
+     
         currentCard.innerHTML =
             formatMoney(currentCash);
 
@@ -502,6 +558,60 @@ function updateDashboard(){
 // =========================================================
 // ELEMENT REFERENCES
 // =========================================================
+
+
+// const editamountInput =
+    // document.getElementById("editAmount");
+
+
+// const editchargeInput =
+    // document.getElementById("editCharge");
+
+
+// // =========================================================
+// // AUTOMATIC CHARGE CALCULATION
+// // RULE:
+// // Every ₹1000 = ₹10
+// // =========================================================
+
+
+// if(editamountInput){
+// debugger
+
+    // editamountInput.addEventListener(
+        // "input",
+        // function(){
+
+
+            // let amount =
+                // Number(
+                    // this.value
+                // );
+
+
+
+            // let charge =
+                // calculateCharge(amount);
+
+
+
+            // if(editchargeInput){
+
+                // chargeInput.value =
+                    // charge;
+
+            // }
+
+
+        // }
+    // );
+
+
+// }
+
+
+
+
 
 const amountInput =
     document.getElementById("amount");
@@ -1000,18 +1110,28 @@ let withdrawal=0;
 
         openingCash:
         openingCash,
+<<<<<<< HEAD
+=======
 
 
         closingCash: getCurrentCash(),
         
+>>>>>>> 3d65729fea05477a8f558ccf0b3569e01d58e0ce
 
 
+        closingCash: getCurrentCash(),
+        
         todayCharges:
         charges,
 
 
+<<<<<<< HEAD
+         totalCharges:
+         charges,
+=======
         totalCharges:
         charges,
+>>>>>>> 3d65729fea05477a8f558ccf0b3569e01d58e0ce
 
 
         carryForwardCharges:
@@ -1033,12 +1153,25 @@ let withdrawal=0;
 
 
 
-    alert(
+    showToast(
         "EOD Completed Successfully"
     );
 
 
 });
+//get previous charges 
+
+function getPreviousDayCharges() {
+
+    const dailyHistory =
+        JSON.parse(localStorage.getItem("dailyHistory")) || [];
+
+    const yesterday = getPreviousDate();
+
+    const previous = dailyHistory.find(item => item.date === yesterday);
+
+    return previous ? Number(previous.totalCharges || 0) : 0;
+}
 
 // =====================================
 // GET TODAY OPENING DATA
@@ -1516,20 +1649,20 @@ document.getElementById(
 
 
 
-let updateCash =
-Number(
-document.getElementById(
-"updateCash"
-).value || 0
-);
+// let updateCash =
+// Number(
+// document.getElementById(
+// "updateCash"
+// ).value || 0
+// );
+
+// Remove
 
 
 
+ let finalCash = openingCash //+ updateCash;
 
-let finalCash =
-openingCash + updateCash;
-
-
+openingCashCard
 
 let openingData={
 
@@ -1565,7 +1698,7 @@ JSON.stringify(openingData)
 
 
 
-alert(
+showToast(
 "Opening Cash Updated Successfully"
 );
 
@@ -1593,7 +1726,7 @@ function validateTransactions() {
     if (banktype.value === "") {
 
         errors.push("कृपया बँक निवडा.");
-        type.classList.add("input-error");
+        banktype.classList.add("input-error");
 
     }
 	
@@ -1665,7 +1798,7 @@ function clearValidation() {
 }
 function addTransaction(){
 
-
+debugger
 
 
     let bank =
@@ -1801,8 +1934,38 @@ function addTransaction(){
 
 
     };
+// let openingCash =
+    // Number(localStorage.getItem("STORAGE_KEYS.OPENING_CASH")) || 0;
 
+// if (openingCash <= 0) {
 
+    // alert(
+        // "❌ Opening Cash उपलब्ध नाही.\n\nकृपया प्रथम Opening Cash भरा."
+    // );
+
+    // return;
+
+// }
+
+const cashValidation = validateCashBalance(type, amount);
+
+if (!cashValidation.success) {
+
+    alert(cashValidation.message);
+
+    return;
+
+}
+
+// let todayCharges =
+    // Number(localStorage.getItem("openingCharges")) || 0;
+
+// todayCharges += Number(charge);
+
+// localStorage.setItem("openingCharges", todayCharges);
+
+// document.getElementById("currentChargesCard").innerHTML =
+    // money(todayCharges);
 
     transactions.push(
         transaction
@@ -1819,17 +1982,156 @@ function addTransaction(){
 
    updateReports();
     clearTransactionForm();
-
-confirm(
-        "व्यवहार यशस्वीपणे सेव्ह झाला आहे"
-    );
+//showToast("व्यवहार यशस्वीपणे सेव्ह झाला आहे");
+ confirm(
+         "व्यवहार यशस्वीपणे सेव्ह झाला आहे"
+     );
 
 
     // alert(
         // "व्यवहार यशस्वीपणे सेव्ह झाला"
     // );
 
+<<<<<<< HEAD
 
+
+}
+
+function validateCashBalance(type, amount) {
+
+    amount = Number(amount);
+ //let currentCard =localStorage.getItem(STORAGE_KEYS.CURRENT_CASH)|| 0;
+ const cash = document.getElementById("currentCashCard").textContent;
+
+const currentcashamount = Number(cash.replace("₹", "").replace(/,/g, "").trim());
+    // Read current cash balance
+    let currentCash = currentcashamount
+
+    // Cash outgoing transaction types
+    const cashOutTypes = [
+        "withdrawal",
+        "cashout",
+        "upi"
+    ];
+
+    if (cashOutTypes.includes(type)) {
+
+        if (currentCash <= 0) {
+
+            return {
+                success: false,
+                message:
+                    "❌ सध्याचा रोख शिल्लक (Current Cash Balance) शून्य आहे.\n\n" +
+                    "कृपया प्रथम Opening Cash मध्ये रक्कम जोडा."
+            };
+
+        }
+
+        if (amount > currentCash) {
+
+            return {
+                success: false,
+                message:
+                    "❌ Current Cash Balance पुरेसा नाही.\n\n" +
+                    "Available Cash : " + currentCash +
+                    "\nRequired Cash : " +amount +
+                    "\n\nकृपया Opening Cash मध्ये रक्कम वाढवा."
+            };
+
+        }
+
+    }
+
+    return {
+        success: true
+    };
+
+}
+=======
+confirm(
+        "व्यवहार यशस्वीपणे सेव्ह झाला आहे"
+    );
+>>>>>>> 3d65729fea05477a8f558ccf0b3569e01d58e0ce
+
+
+    // alert(
+        // "व्यवहार यशस्वीपणे सेव्ह झाला"
+    // );
+
+<<<<<<< HEAD
+function validateUpdatingBalance(amount) {
+
+    
+
+       
+     if (amount ==0) {
+
+            return {
+                success: false,
+                message:
+                    "❌ Update Cash Amount  पुरेसा नाही.\n\n" +
+                    
+                    "\nRequired Update Cash Amount : " +amount +
+                    "\n\nकृपया Update Cash Amount मध्ये रक्कम वाढवा."
+            };
+
+        }
+
+    
+
+    return {
+        success: true
+    };
+
+}
+
+
+function showToast(message) {
+
+    let toast = document.getElementById("toast");
+
+    if (!toast) {
+
+        toast = document.createElement("div");
+
+        toast.id = "toast";
+
+        toast.style.position = "fixed";
+
+        toast.style.right = "20px";
+
+        toast.style.top = "20px";
+
+        toast.style.background = "#198754";
+
+        toast.style.color = "#fff";
+
+        toast.style.padding = "14px 24px";
+
+        toast.style.borderRadius = "8px";
+
+        toast.style.boxShadow = "0 8px 20px rgba(0,0,0,.2)";
+
+        toast.style.zIndex = "99999";
+
+        document.body.appendChild(toast);
+
+    }
+
+    toast.innerHTML = message;
+
+    toast.style.display = "block";
+
+    clearTimeout(toast.timer);
+
+    toast.timer = setTimeout(() => {
+
+        toast.style.display = "none";
+
+    }, 2500);
+=======
+
+>>>>>>> 3d65729fea05477a8f558ccf0b3569e01d58e0ce
 
 }
 function getPreviousDate() {
@@ -2139,36 +2441,25 @@ ${item.mobile || "-"}
 </td>
 
 
-
 <td>
 
-
 <button
+    class="action-btn edit-btn"
+    onclick="editTransaction(${index})"
+    ${isAdmin() ? "" : "disabled"}>
 
-class="action-btn edit-btn"
-
-onclick="editTransaction(${index})"
-
->
-
-<i class="fa fa-edit"></i>
+    <i class="fa fa-edit"></i>
 
 </button>
 
-
-
 <button
+    class="action-btn delete-btn"
+    onclick="deleteTransaction(${index})"
+    ${isAdmin() ? "" : "disabled"}>
 
-class="action-btn delete-btn"
-
-onclick="deleteTransaction(${index})"
-
->
-
-<i class="fa fa-trash"></i>
+    <i class="fa fa-trash"></i>
 
 </button>
-
 
 </td>
 
@@ -2814,6 +3105,50 @@ refreshApplication();
 );
 
 
+const cancelEdit =
+
+document.getElementById(
+    "cancelEdit"
+);
+
+
+
+if(cancelEdit){
+
+
+cancelEdit.onclick=function(){
+
+
+    closeEditModal();
+
+
+}
+
+
+}
+
+
+const closeModaledit =
+
+document.getElementById(
+    "editcloseModal"
+);
+
+
+
+if(closeModaledit){
+
+
+editcloseModal.onclick=function(){
+
+
+    closeEditModal();
+
+
+}
+
+
+}
 
 // =========================================================
 // END OF PART 3C
@@ -2919,7 +3254,7 @@ function(){
 
     a.download=
 
-    "CSP_Backup_"
+    "DhandaiEnterprises_Daily_Cash_Management_System_Backup_"
 
     +
 
@@ -2946,6 +3281,21 @@ function(){
 
 }
 
+const cscBtn = document.getElementById("cscOnlineBtn");
+
+if (!isAdmin()) {
+
+    cscBtn.disabled = true;
+
+}
+//checkadmin user
+function isAdmin() {
+
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
+
+    return user && user.role === "ADMIN";
+
+}
 
 
 // =========================================================
@@ -2982,6 +3332,8 @@ importBtn.onclick=function(){
 
 
 }
+
+
 
 
 
@@ -3106,7 +3458,65 @@ reader.readAsText(file);
 
 }
 
+function marathiToEnglishNumber(value) {
 
+    if (!value) return "";
+
+    const map = {
+        "०":"0",
+        "१":"1",
+        "२":"2",
+        "३":"3",
+        "४":"4",
+        "५":"5",
+        "६":"6",
+        "७":"7",
+        "८":"8",
+        "९":"9"
+    };
+
+    return value.replace(/[०-९]/g, m => map[m]);
+
+}
+
+function formatTime(timeValue) {
+
+    if (!timeValue) return "";
+
+    // Already formatted (09:15 AM)
+    if (typeof timeValue === "string" &&
+        (timeValue.includes("AM") || timeValue.includes("PM"))) {
+        return timeValue;
+    }
+
+    // ISO Date/Time
+    const date = new Date(timeValue);
+
+    if (!isNaN(date.getTime())) {
+
+        return date.toLocaleTimeString("en-IN", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+        });
+    }
+
+    return timeValue;
+}
+
+function formatReportDate(dateString) {
+
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+
+    return date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
+
+}
 
 // =========================================================
 // EXPORT CSV / EXCEL
@@ -3134,9 +3544,7 @@ function(){
 
 
 let csv =
-
-"Date,Time,Bank,Type,Customer,Mobile,Amount,Charge,Remarks\n";
-
+"Date,Time,Bank,Transaction Type,Customer Name,Mobile,Aadhaar,Amount,Charges,Remarks\n";
 
 
 transactions.forEach(
@@ -3147,11 +3555,11 @@ function(item){
 
 csv +=
 
-`${item.date},`
+`${formatReportDate(item.date)},`
 
 +
 
-`${item.time},`
+`${marathiToEnglishNumber(item.time)},`
 
 +
 
@@ -3226,7 +3634,7 @@ link.href=url;
 
 link.download=
 
-"CSP_Transaction_Report.csv";
+"Fino_Payment_Bank_Transaction_Report.csv";
 
 
 
