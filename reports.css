@@ -1,0 +1,747 @@
+/* =========================================================
+   DHANADAYI CSP CASH MANAGER
+   report.css
+
+   PHASE 2A - PROFESSIONAL REPORT MODULE
+=========================================================*/
+.logout-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:#e53935;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    padding:10px 18px;
+
+    border-radius:25px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+
+}
+
+.logout-btn:hover{
+
+    background:#c62828;
+
+    transform:translateY(-2px);
+
+}
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:"Noto Sans Devanagari",
+    Arial,sans-serif;
+
+}
+
+
+body{
+
+    background:#f4f7fb;
+
+    color:#333;
+
+}
+
+
+
+/* =========================================================
+   HEADER
+=========================================================*/
+
+
+.report-header{
+
+
+    background:linear-gradient(
+        135deg,
+        #005baa,
+        #0084d8
+    );
+
+
+    color:white;
+
+    padding:25px 5%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.report-header h1{
+
+
+    font-size:28px;
+
+    margin-bottom:8px;
+
+
+}
+
+
+
+.report-header p{
+
+
+    opacity:.9;
+
+    font-size:16px;
+
+
+}
+
+
+
+.report-header button{
+
+
+    background:white;
+
+    color:#005baa;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+
+
+/* =========================================================
+   FILTER SECTION
+=========================================================*/
+
+
+.filter-section{
+
+
+    width:90%;
+
+    margin:30px auto;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.filter-section h2{
+
+
+    margin-bottom:20px;
+
+    color:#005baa;
+
+
+}
+
+
+
+.filter-box{
+
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:end;
+
+    flex-wrap:wrap;
+
+
+}
+
+
+
+.filter-box div{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+
+}
+
+
+
+label{
+
+
+    font-weight:600;
+
+
+}
+
+
+
+input,
+select{
+
+
+    padding:12px;
+
+    min-width:220px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:15px;
+
+
+}
+
+
+
+#viewReport{
+
+
+    background:#005baa;
+
+    color:white;
+
+    border:none;
+
+    padding:13px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+
+}
+
+
+
+/* =========================================================
+   REPORT DASHBOARD CARDS
+=========================================================*/
+
+
+.report-dashboard{
+
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+
+}
+
+
+
+.report-card{
+
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:16px;
+
+    text-align:center;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.08);
+
+    border-top:6px solid #555;
+
+
+}
+
+
+
+.report-card h3{
+
+
+    color:#555;
+
+    font-size:17px;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.report-card h2{
+
+
+    font-size:30px;
+
+    color:#222;
+
+
+}
+
+
+
+/* CARD COLORS */
+
+
+.report-card.blue{
+
+    border-color:#005baa;
+
+}
+
+
+.report-card.green{
+
+    border-color:#16a34a;
+
+}
+
+
+.report-card.red{
+
+    border-color:#d93025;
+
+}
+
+
+.report-card.orange{
+
+    border-color:#f39c12;
+
+}
+
+
+.report-card.purple{
+
+    border-color:#8e44ad;
+
+}
+
+
+
+
+
+/* =========================================================
+   REPORT TABLE SECTION
+=========================================================*/
+
+
+.transaction-report{
+
+
+    width:90%;
+
+    margin:35px auto;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.08);
+
+
+}
+
+
+
+.report-actions{
+
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+    flex-wrap:wrap;
+
+
+}
+
+
+
+.report-actions button{
+
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    color:white;
+
+
+}
+
+
+
+#downloadPDF{
+
+
+    background:#005baa;
+
+
+}
+
+
+#printReport{
+
+
+    background:#005baa;
+
+
+}
+
+
+#downloadExcel{
+
+
+    background:#16a34a;
+
+
+}
+
+
+
+
+
+table{
+
+
+    width:100%;
+
+    border-collapse:collapse;
+
+
+}
+
+
+
+thead{
+
+
+    background:#005baa;
+
+    color:white;
+
+
+}
+
+
+
+th{
+
+
+    padding:15px;
+
+    text-align:center;
+
+
+}
+
+
+
+td{
+
+
+    padding:13px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+
+}
+
+
+
+tbody tr:nth-child(even){
+
+
+    background:#f7fbff;
+
+
+}
+
+
+
+tbody tr:hover{
+
+
+    background:#eef6ff;
+
+
+}
+
+
+
+
+
+/* =========================================================
+   FOOTER
+=========================================================*/
+
+
+footer{
+
+
+    margin-top:40px;
+
+    background:#243447;
+
+    color:white;
+
+    text-align:center;
+
+    padding:25px;
+
+
+}
+
+
+
+/* =========================================================
+   PRINT REPORT
+=========================================================*/
+
+
+@media print{
+
+
+body{
+
+    background:white;
+
+}
+
+
+
+.report-header button,
+.filter-section,
+.report-actions{
+
+    display:none;
+
+}
+
+
+
+.report-header{
+
+    background:white;
+
+    color:black;
+
+    border-bottom:2px solid black;
+
+}
+
+
+
+.report-card,
+.transaction-report{
+
+    box-shadow:none;
+
+    border:1px solid #333;
+
+}
+
+
+
+table{
+
+    border:1px solid black;
+
+}
+
+
+
+th{
+
+    background:#eee!important;
+
+    color:black;
+
+}
+
+
+
+td,th{
+
+    border:1px solid black;
+
+}
+
+
+footer{
+
+    display:none;
+
+}
+
+
+}
+
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+=========================================================*/
+
+
+@media(max-width:768px){
+
+
+
+.report-header{
+
+
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:20px;
+
+
+}
+
+
+
+.report-header h1{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+.filter-box{
+
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+
+}
+
+
+
+.filter-box input,
+.filter-box select,
+#viewReport{
+
+
+    width:100%;
+
+
+}
+
+
+
+.transaction-report{
+
+
+    overflow-x:auto;
+
+
+}
+
+
+
+table{
+
+
+    min-width:900px;
+
+
+}
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+.report-dashboard{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+.report-card h2{
+
+
+    font-size:26px;
+
+
+}
+
+
+}

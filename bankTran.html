@@ -1,0 +1,5368 @@
+<html lang="mr"><head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+       
+धनदाई एंटरप्रायझेस फिनो पेमेंट बँक Cash Management System
+    </title>
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!--==============================
+        HEADER
+================================-->
+<header class="top-header">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-building-columns"></i>
+
+        <div>
+
+
+            <h1>धनदाई एंटरप्रायझेस — Cash Management System</h1>
+
+            <p>Fino Payment Bank | Bank of Maharashtra | CSC | MahaOnline</p>
+
+            <h1>
+
+
+
+
+        </h1></div>
+
+    </div>
+
+    <div class="header-right">
+
+        <span id="todayDate">📅 बुधवार, ०५ ऑगस्ट, २०२६</span>
+
+        <button class="logout-btn" onclick="logout()">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+<!-- <header class="top-header"> -->
+
+    <!-- <div class="logo"> -->
+
+        <!-- <i class="fa-solid fa-building-columns"></i> -->
+
+        <!-- <div> -->
+
+            <!-- <h1> -->
+<!-- धनदाई एंटरप्रायझेस — Daily Cash Management System</h1> -->
+
+            
+
+        <!-- </div> -->
+
+    <!-- </div> -->
+
+    <!-- <div class="header-right"> -->
+
+        <!-- <span id="todayDate"></span> -->
+		 <!-- <a href="#" class="logout-btn" onclick="logout()"> -->
+        <!-- <i class="fa-solid fa-right-from-bracket"></i> -->
+        <!-- Logout -->
+    <!-- </a> -->
+
+    <!-- </div> -->
+
+<!-- </header> -->
+
+<!--==============================
+        NAVIGATION
+================================-->
+
+<nav class="navbar">
+
+
+
+<button id="viewReport" onclick="redirectReport()">
+View Report
+</button>
+
+<button id="cscOnlineBtn" onclick="redirectReportcscMahaonline()">
+Csc Mahaonline Management
+</button>
+
+
+
+<button id="printDailyReport">
+Print Report
+</button>
+
+   <button id="exportBackup">
+    Backup Data
+</button>
+
+<button id="importBackupBtn">
+    Restore Data
+</button>
+
+<input type="file" id="importBackup" accept=".json" style="display:none">
+
+
+<button id="exportExcel">
+    Export Excel
+</button>
+    <!-- <button class="active"> -->
+        <!-- <i class="fa fa-home"></i> -->
+        <!-- Dashboard -->
+    <!-- </button> -->
+
+    <!-- <button> -->
+        <!-- <i class="fa fa-money-bill-wave"></i> -->
+        <!-- Transactions -->
+    <!-- </button> -->
+
+    <!-- <button> -->
+        <!-- <i class="fa fa-chart-column"></i> -->
+        <!-- Reports -->
+    <!-- </button> -->
+
+    <!-- <button> -->
+        <!-- <i class="fa fa-gear"></i> -->
+        <!-- Settings -->
+    <!-- </button> -->
+
+</nav>
+
+<!--==============================
+        DASHBOARD
+================================-->
+<marquee behavior="scroll" direction="left" scrollamount="5" style="color: red">
+<strong style="color:red">महत्त्वाची सूचना 🌾</strong>
+	दिवसअखेर (EOD) प्रक्रिया पूर्ण झाल्यानंतर CSC, महाऑनलाइन व बँकिंगमधील सर्व दैनिक व्यवहारांचा बॅकअप घेऊन सुरक्षितरीत्या जतन करावा.
+       
+
+		</marquee>
+<section class="dashboard">
+
+    <div class="card blue">
+
+        <i class="fa fa-wallet"></i>
+
+        <h3>Opening Cash</h3>
+
+        <h2 id="openingCashCard">₹5,00,000</h2>
+
+    </div>
+
+    <div class="card green">
+
+        <i class="fa fa-money-bill"></i>
+
+        <h3>Current Cash</h3>
+
+        <h2 id="currentCashCard">₹1,39,000</h2>
+
+    </div>
+
+       <!-- <div class="card orange"> -->
+
+        <!-- <i class="fa fa-indian-rupee-sign"></i> -->
+
+        <!-- <h3>Previous Day Total Charges</h3> -->
+         <!-- <h1 id="previousDayCharges"> </h1> -->
+        <!-- <h2 id="currentChargesCard"> -->
+            <!-- ₹0 -->
+        <!-- </h2> -->
+
+    <!-- </div> -->
+    <div class="card orange">
+
+        <i class="fa fa-indian-rupee-sign"></i>
+
+        <h3>Total Charges</h3>
+
+        <h2 id="chargesCard">₹24,309</h2>
+
+    </div>
+
+    <div class="card red">
+
+        <i class="fa fa-list"></i>
+
+        <h3>Transactions</h3>
+
+        <h2 id="transactionCount">49</h2>
+
+    </div>
+	<div class="card red">
+
+    <h3 class="card-title">Previous Day Info</h3>
+
+    <div class="info-row">
+        <span class="label">Balance</span>
+        <span class="value" id="previousDayCash">₹5,68,055</span>
+    </div>
+
+    <div class="info-row">
+        <span class="label">Total Charges</span>
+        <span class="value" id="carryForwardPrevdayCharges">₹6,000</span>
+    </div>
+
+    <div class="info-row">
+        <span class="label">Total Transactions</span>
+        <span class="value" id="PrevioustransactionCount">₹7</span>
+    </div>
+
+</div>
+	 <!-- <div class="card red"> -->
+        <!-- <span>Previous Day </span> -->
+        <!-- Balance <h1 id="previousDayCash"> </h1> -->
+       <!-- <br> -->
+		<!-- <span>charges</span> -->
+        <!-- <h1 id="previousDayCharges"> </h1> -->
+        <!-- <h3>total Transactions</h3> -->
+
+        <!-- <h2 id="PrevioustransactionCount"> -->
+            <!-- 0 -->
+        <!-- </h2> -->
+
+    <!-- </div> -->
+
+</section>
+
+<!--==============================
+        OPENING CASH
+================================-->
+
+<section class="opening-section">
+
+    <div class="section-title">
+
+        <i class="fa fa-coins"></i>
+
+        <h2>
+            आजची सुरुवातीची रोकड
+        </h2>
+		<!-- <div class="card"> -->
+    <!-- <h3>मागील दिवसाची शिल्लक</h3> -->
+    <!-- <h2 id="previousDayCash">₹0</h2> -->
+<!-- </div>	 -->
+
+    </div>
+
+    <div class="opening-box">
+
+      
+
+        <!-- <input -->
+            <!-- <!-- type="number" -->
+            <!-- id="updateCash" -->
+            <!-- placeholder=" update cashउदा. 50000">  -->
+        <label>
+
+            सुरुवातीची रोकड (Opening Cash)
+
+        </label>
+
+        <input type="number" id="openingCash" placeholder="उदा. 50000">
+
+        <button id="saveOpeningCash">
+
+            <i class="fa fa-save"></i>
+
+            Save Opening Cash
+
+        </button>
+
+    </div>
+	
+
+
+</section>
+
+<!--==============================
+        LIVE CASH STATUS
+================================-->
+
+<section class="cash-status">
+
+    <div class="status-box">
+
+        <div>
+
+            <h3>
+
+                उपलब्ध रोकड
+
+            </h3>
+
+            <h1 id="liveCash">₹1,39,000</h1>
+
+        </div>
+
+        <i class="fa fa-sack-dollar"></i>
+
+    </div>
+
+</section>
+
+<!--==============================
+    NEXT PART STARTS HERE
+    Transaction Form
+================================-->
+<!-- ===================================================
+        TRANSACTION ENTRY
+==================================================== -->
+
+<section class="transaction-section">
+
+    <div class="section-title">
+        <i class="fa-solid fa-money-check-dollar"></i>
+        <h2>नवीन व्यवहार</h2>
+    </div>
+	<div id="errorBox" class="error-box" style="display:none;"></div>
+   <form id="application-form" novalidate="">
+    <div class="transaction-form">
+
+        <!-- Bank -->
+
+        <div class="form-group">
+
+            <label>
+                बँक निवडा
+            </label>
+
+            <select id="bank" required="">
+                 <option value="">-- बँक निवडा --</option>
+                <option value="FINO">
+                    Fino Payment Bank
+                </option>
+
+                <option value="BOM">
+                    Bank of Maharashtra
+                </option>	
+
+            </select>
+
+        </div>
+
+        <!-- Transaction Type -->
+
+        <div class="form-group">
+
+            <label>
+
+                व्यवहार प्रकार
+
+            </label>
+
+            <select id="transactionType" required="">
+
+              <option value="">-- व्यवहार प्रकार निवडा --</option>
+                <option value="withdrawal">
+                    AEPS Withdrawal
+                </option>
+
+                <option value="deposit">
+                    AEPS Deposit
+                </option>
+
+                <option value="upi">
+                    UPI / PhonePe Cash
+                </option>
+
+                <option value="cashin">
+                    Cash Deposit
+                </option>
+
+                <option value="cashout">
+                    Cash Withdrawal
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- Customer Name -->
+
+        <div class="form-group">
+
+            <label>
+
+                ग्राहकाचे नाव
+
+            </label>
+
+            <input type="text" id="customerName" placeholder="ग्राहकाचे नाव">
+
+        </div>
+
+        <!-- Mobile -->
+
+        <div class="form-group">
+
+            <label>
+
+                मोबाईल क्रमांक
+
+            </label>
+
+            <input type="text" id="mobile" maxlength="10" placeholder="9876543210">
+
+        </div>
+
+        <!-- Aadhaar -->
+
+        <div class="form-group">
+
+            <label>
+
+                आधार क्रमांक (Optional)
+
+            </label>
+
+            <input required="" type="text" id="aadhaar" maxlength="12" placeholder="XXXX XXXX XXXX">
+
+        </div>
+
+        <!-- Amount -->
+
+        <div class="form-group">
+
+            <label>
+
+                व्यवहार रक्कम
+
+            </label>
+
+            <input type="number" id="amount" placeholder="0" required="">
+
+        </div>
+
+        <!-- Charge -->
+
+        <div class="form-group">
+
+            <label>
+
+                सेवा शुल्क
+
+            </label>
+
+            <input type="number" id="charge" readonly="" value="0">
+
+        </div>
+
+        <!-- Remarks -->
+
+        <div class="form-group full-width">
+
+            <label>
+
+                Remarks
+
+            </label>
+
+            <textarea id="remarks" rows="3" placeholder="Remarks"></textarea>
+
+        </div>
+
+        <!-- Save -->
+
+        <div class="form-group full-width">
+
+            <button id="saveTransactions">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                व्यवहार जतन करा
+
+            </button>
+
+        </div>
+
+    </div>
+</form>
+</section>
+
+<!-- ===================================================
+        TODAY SUMMARY
+==================================================== -->
+
+<section class="summary-section">
+
+    <div class="section-title">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <h2>
+
+            आजचा सारांश
+
+        </h2>
+
+    </div>
+
+    <div class="summary-grid">
+
+        <div class="summary-card withdrawal">
+
+            <h4>
+
+                Withdrawal
+
+            </h4>
+
+            <h2 id="totalWithdrawal">₹7,54,755</h2>
+
+        </div>
+
+        <div class="summary-card deposit">
+
+            <h4>
+
+                Deposit
+
+            </h4>
+
+            <h2 id="totalDeposit">₹7,66,805</h2>
+
+        </div>
+
+        <div class="summary-card upi">
+
+            <h4>
+
+                UPI Cash
+
+            </h4>
+
+            <h2 id="totalUPI">₹2,37,305</h2>
+
+        </div>
+
+        <div class="summary-card charges">
+
+            <h4>
+
+                Charges
+
+            </h4>
+
+            <h2 id="totalCharges">₹24,309</h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================================================
+        PART 1C STARTS BELOW
+        Transaction History
+==================================================== -->
+<!-- ===================================================
+        TRANSACTION HISTORY
+==================================================== -->
+
+<section class="history-section">
+
+    <div class="section-title">
+
+        <i class="fa-solid fa-clock-rotate-left"></i>
+
+        <h2>आजचे व्यवहार</h2>
+
+    </div>
+
+    <div class="table-actions">
+
+        <input type="text" id="searchTransaction" placeholder="ग्राहकाचे नाव / मोबाईल शोधा">
+
+        <button id="printReport">
+            <i class="fa fa-print"></i>
+            Print
+        </button>
+
+        <button id="clearTransactions">
+            <i class="fa fa-trash"></i>
+            Clear All
+        </button>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table id="transactionTable">
+
+            <thead>
+
+                <tr>
+
+                     <th>दिनांक </th>
+                    <th>वेळ</th>
+
+                    <th>बँक</th>
+
+                    <th>प्रकार</th>
+
+                    <th>ग्राहक</th>
+
+                    <th>मोबाईल</th>
+
+                    <th>रक्कम</th>
+
+                    <th>शुल्क</th>
+
+                    <th>रोकड</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="transactionBody"><tr>
+
+
+
+<td>
+
+31-07-2026
+
+</td>
+<td>
+
+९:०९:०९ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash In
+
+</td>
+
+
+
+<td>
+
+sandeep
+
+</td>
+
+
+
+<td>
+
+8555555555
+
+</td>
+
+
+
+<td>
+
+₹20,000
+
+</td>
+
+
+
+<td>
+
+₹200
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,20,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(0)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(0)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+31-07-2026
+
+</td>
+<td>
+
+९:०९:३७ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+sonali
+
+</td>
+
+
+
+<td>
+
+8755555555
+
+</td>
+
+
+
+<td>
+
+₹45,000
+
+</td>
+
+
+
+<td>
+
+₹450
+
+</td>
+
+
+
+<td class="balance">
+
+₹4,75,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(1)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(1)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+31-07-2026
+
+</td>
+<td>
+
+९:११:३६ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+UPI Cash
+
+</td>
+
+
+
+<td>
+
+test
+
+</td>
+
+
+
+<td>
+
+7555555555
+
+</td>
+
+
+
+<td>
+
+₹35,000
+
+</td>
+
+
+
+<td>
+
+₹350
+
+</td>
+
+
+
+<td class="balance">
+
+₹4,40,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(2)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(2)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+31-07-2026
+
+</td>
+<td>
+
+१२:१८:३७ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+kk
+
+</td>
+
+
+
+<td>
+
+5555555555
+
+</td>
+
+
+
+<td>
+
+₹5,000
+
+</td>
+
+
+
+<td>
+
+₹50
+
+</td>
+
+
+
+<td class="balance">
+
+₹4,35,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(3)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(3)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+31-07-2026
+
+</td>
+<td>
+
+१२:१८:५७ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+kiran
+
+</td>
+
+
+
+<td>
+
+8888888888
+
+</td>
+
+
+
+<td>
+
+₹15,000
+
+</td>
+
+
+
+<td>
+
+₹150
+
+</td>
+
+
+
+<td class="balance">
+
+₹4,20,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(4)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(4)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+31-07-2026
+
+</td>
+<td>
+
+१२:२५:५८ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+kirank
+
+</td>
+
+
+
+<td>
+
+8555555555
+
+</td>
+
+
+
+<td>
+
+₹45,000
+
+</td>
+
+
+
+<td>
+
+₹450
+
+</td>
+
+
+
+<td class="balance">
+
+₹3,75,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(5)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(5)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+31-07-2026
+
+</td>
+<td>
+
+१२:३२:१३ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+hhh
+
+</td>
+
+
+
+<td>
+
+6888888888
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹3,25,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(6)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(6)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+१२:३८:१० AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+kiran
+
+</td>
+
+
+
+<td>
+
+8555555555
+
+</td>
+
+
+
+<td>
+
+₹25,000
+
+</td>
+
+
+
+<td>
+
+₹250
+
+</td>
+
+
+
+<td class="balance">
+
+₹3,00,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(7)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(7)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+१२:४०:३० AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+kran
+
+</td>
+
+
+
+<td>
+
+5555555555
+
+</td>
+
+
+
+<td>
+
+₹16,000
+
+</td>
+
+
+
+<td>
+
+₹150
+
+</td>
+
+
+
+<td class="balance">
+
+₹3,16,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(8)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(8)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+१२:४२:४९ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+sonali
+
+</td>
+
+
+
+<td>
+
+4444444444
+
+</td>
+
+
+
+<td>
+
+₹1,50,000
+
+</td>
+
+
+
+<td>
+
+₹1,500
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,66,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(9)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(9)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+१:०५:५६ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹45,000
+
+</td>
+
+
+
+<td>
+
+₹450
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,21,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(10)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(10)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+१:११:२६ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹12,000
+
+</td>
+
+
+
+<td>
+
+₹120
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,09,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(11)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(11)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+१:५१:१७ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash In
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹15,005
+
+</td>
+
+
+
+<td>
+
+₹150
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,24,005
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(12)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(12)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+२:२२:५० AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+fdfdf
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹1,500
+
+</td>
+
+
+
+<td>
+
+₹15
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,22,505
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(13)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(13)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+१२:३९:५६ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+kiran
+
+</td>
+
+
+
+<td>
+
+8888888888
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,72,505
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(14)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(14)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+२:४१:२६ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+kirsn
+
+</td>
+
+
+
+<td>
+
+8888888888
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,22,505
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(15)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(15)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+२:४३:०१ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹4,93,000
+
+</td>
+
+
+
+<td>
+
+₹4,930
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,15,505
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(16)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(16)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+२:४९:२७ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+sonali
+
+</td>
+
+
+
+<td>
+
+5555555555
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,65,505
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(17)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(17)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+२:५०:०३ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹1,00,000
+
+</td>
+
+
+
+<td>
+
+₹1,000
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,65,505
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(18)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(18)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+01-08-2026
+
+</td>
+<td>
+
+११:३०:२५ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹45,000
+
+</td>
+
+
+
+<td>
+
+₹450
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,20,505
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(19)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(19)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+02-08-2026
+
+</td>
+<td>
+
+१:२४:२६ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+kiran
+
+</td>
+
+
+
+<td>
+
+8555555555
+
+</td>
+
+
+
+<td>
+
+₹5,000
+
+</td>
+
+
+
+<td>
+
+₹50
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,15,505
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(20)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(20)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+02-08-2026
+
+</td>
+<td>
+
+१:२४:४१ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+sonali
+
+</td>
+
+
+
+<td>
+
+4444444444
+
+</td>
+
+
+
+<td>
+
+₹2,500
+
+</td>
+
+
+
+<td>
+
+₹25
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,18,005
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(21)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(21)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:०१:०९ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+kiran
+
+</td>
+
+
+
+<td>
+
+9555555555
+
+</td>
+
+
+
+<td>
+
+₹10,000
+
+</td>
+
+
+
+<td>
+
+₹100
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,08,005
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(22)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(22)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:०८:१३ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+pavankk
+
+</td>
+
+
+
+<td>
+
+9555555555
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,58,005
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(23)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(23)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:०९:०८ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+sachin
+
+</td>
+
+
+
+<td>
+
+8555555555
+
+</td>
+
+
+
+<td>
+
+₹5,000
+
+</td>
+
+
+
+<td>
+
+₹50
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,63,005
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(24)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(24)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:१२:४८ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+sachin
+
+</td>
+
+
+
+<td>
+
+5555555555
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,13,005
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(25)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(25)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:३८:३६ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash In
+
+</td>
+
+
+
+<td>
+
+kiyash
+
+</td>
+
+
+
+<td>
+
+9555555555
+
+</td>
+
+
+
+<td>
+
+₹5,000
+
+</td>
+
+
+
+<td>
+
+₹50
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,18,005
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(26)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(26)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:३९:२३ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash In
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹75,000
+
+</td>
+
+
+
+<td>
+
+₹750
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,93,005
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(27)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(27)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४०:४३ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash Out
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹750
+
+</td>
+
+
+
+<td>
+
+₹75
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,92,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(28)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(28)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४३:४४ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash In
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹7,42,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(29)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(29)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४५:१५ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash Out
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹1,00,000
+
+</td>
+
+
+
+<td>
+
+₹1,000
+
+</td>
+
+
+
+<td class="balance">
+
+₹6,42,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(30)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(30)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४५:३६ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash Out
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹1,00,000
+
+</td>
+
+
+
+<td>
+
+₹1,000
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,42,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(31)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(31)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४५:५६ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash In
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,92,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(32)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(32)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४६:२६ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+UPI Cash
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,42,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(33)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(33)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४६:४८ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+UPI Cash
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹2,000
+
+</td>
+
+
+
+<td>
+
+₹20
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,40,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(34)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(34)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४७:२२ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹305
+
+</td>
+
+
+
+<td>
+
+₹3
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,39,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(35)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(35)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४७:३८ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹305
+
+</td>
+
+
+
+<td>
+
+₹3
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,40,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(36)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(36)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४७:५१ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash Out
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹305
+
+</td>
+
+
+
+<td>
+
+₹3
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,39,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(37)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(37)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४८:०५ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash In
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹305
+
+</td>
+
+
+
+<td>
+
+₹3
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,40,255
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(38)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(38)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+03-08-2026
+
+</td>
+<td>
+
+४:४८:१८ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+UPI Cash
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹305
+
+</td>
+
+
+
+<td>
+
+₹3
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,39,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(39)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(39)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+04-08-2026
+
+</td>
+<td>
+
+१२:३५:५० PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹5,000
+
+</td>
+
+
+
+<td>
+
+₹50
+
+</td>
+
+
+
+<td class="balance">
+
+₹5,34,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(40)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(40)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+04-08-2026
+
+</td>
+<td>
+
+१२:३६:२२ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹95,000
+
+</td>
+
+
+
+<td>
+
+₹950
+
+</td>
+
+
+
+<td class="balance">
+
+₹4,39,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(41)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(41)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+04-08-2026
+
+</td>
+<td>
+
+१:४३:५६ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+UPI Cash
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹1,50,000
+
+</td>
+
+
+
+<td>
+
+₹1,500
+
+</td>
+
+
+
+<td class="balance">
+
+₹2,89,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(42)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(42)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+04-08-2026
+
+</td>
+<td>
+
+२:२२:२९ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Deposit
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹3,39,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(43)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(43)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+04-08-2026
+
+</td>
+<td>
+
+२:२२:४२ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹2,89,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(44)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(44)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+04-08-2026
+
+</td>
+<td>
+
+२:३४:२१ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash Out
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹2,00,000
+
+</td>
+
+
+
+<td>
+
+₹2,000
+
+</td>
+
+
+
+<td class="balance">
+
+₹89,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(45)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(45)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+04-08-2026
+
+</td>
+<td>
+
+२:३४:३४ PM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+Cash In
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹50,000
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,39,950
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(46)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(46)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+05-08-2026
+
+</td>
+<td>
+
+१०:१३:३१ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-fino">
+
+Fino Payment Bank
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹500
+
+</td>
+
+
+
+<td>
+
+₹5
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,39,450
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(47)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(47)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr><tr>
+
+
+
+<td>
+
+05-08-2026
+
+</td>
+<td>
+
+१०:१३:४४ AM
+
+</td>
+
+
+<td>
+
+<span class="badge badge-bom">
+
+Bank of Maharashtra
+
+</span>
+
+</td>
+
+
+
+<td>
+
+AEPS Withdrawal
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+-
+
+</td>
+
+
+
+<td>
+
+₹450
+
+</td>
+
+
+
+<td>
+
+₹4
+
+</td>
+
+
+
+<td class="balance">
+
+₹1,39,000
+
+</td>
+
+
+<td>
+
+<button class="action-btn edit-btn" onclick="editTransaction(48)" disabled="">
+
+    <i class="fa fa-edit"></i>
+
+</button>
+
+<button class="action-btn delete-btn" onclick="deleteTransaction(48)" disabled="">
+
+    <i class="fa fa-trash"></i>
+
+</button>
+
+</td>
+
+
+</tr></tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================
+        END OF DAY SUMMARY
+==================================================== -->
+
+<section class="eod-section">
+
+    <div class="section-title">
+
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+
+        <h2>End Of Day Report</h2>
+
+    </div>
+
+    <div class="summary-grid">
+
+        <div class="summary-card">
+
+            <h4>Opening Cash</h4>
+
+            <h2 id="eodOpening">₹5,00,000</h2>
+
+        </div>
+
+        <div class="summary-card">
+
+            <h4>Closing Cash</h4>
+
+            <h2 id="eodClosing">₹1,39,000</h2>
+
+        </div>
+
+        <div class="summary-card">
+
+            <h4>Total Charges</h4>
+
+            <h2 id="eodCharges">₹24,309</h2>
+
+        </div>
+
+        <div class="summary-card">
+
+            <h4>Total Transactions</h4>
+
+            <h2 id="eodTransactions">₹49</h2>
+
+        </div>
+		<!-- EOD CLOSE BUTTON -->
+
+    <div class="form-group full-width">
+
+
+        <button type="button" id="closeDayBtn" class="danger-btn">
+
+
+            <i class="fa-solid fa-lock"></i>
+
+
+            Close Day &amp; Carry Forward
+
+
+        </button>
+
+
+    </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================
+        EDIT TRANSACTION MODAL
+==================================================== -->
+
+<div class="modal" id="editModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+
+                Edit Transaction
+
+            </h2>
+
+            <span class="close" id="editcloseModal">
+
+                ×
+
+            </span>
+
+        </div>
+
+        <div class="modal-body">
+
+            <input type="hidden" id="editIndex">
+
+            <label>
+
+                Customer Name
+
+            </label>
+
+            <input type="text" id="editCustomer">
+
+            <label>
+
+                Mobile
+
+            </label>
+
+            <input type="text" id="editMobile">
+
+            <label>
+
+                Amount
+
+            </label>
+
+            <input type="number" id="editAmount">
+
+            <label>
+
+                Charge
+
+            </label>
+
+            <input type="number" id="editCharge">
+
+            <label>
+
+                Remarks
+
+            </label>
+
+            <textarea id="editRemarks" rows="3"></textarea>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button id="updateTransaction">
+
+                Update
+
+            </button>
+
+            <button id="cancelEdit">
+
+                Cancel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===================================================
+        FOOTER
+==================================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h3>
+
+            
+धनदाई एंटरप्रायझेस Cash Management System.
+
+        </h3>
+
+       
+फिनो पेमेंट बँक |
+        महाराष्ट्र बँक ग्राहक सेवा  केंद्, महालपाटणे ४२३२१३
+
+        
+
+        <p>
+
+            © 2026 All Rights Reserved  
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- ===================================================
+        JAVASCRIPT FILE
+==================================================== -->
+
+<script src="app.js"></script>
+
+
+
+</body></html>

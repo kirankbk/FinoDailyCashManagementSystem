@@ -1,0 +1,2729 @@
+/* =========================================================
+   DHANADAYI CSP CASH MANAGER
+   Part 2A
+=========================================================*/
+
+/* Google Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =========================================================
+   RESET
+=========================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#eef3f8;
+
+    color:#333;
+
+    min-height:100vh;
+
+}
+
+.card-title{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:10px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+<<<<<<< HEAD
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    background:linear-gradient(135deg,#0d47a1,#1976d2);
+    color:#fff;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo i{
+    font-size:40px;
+}
+
+.logo h1{
+    font-size:24px;
+    margin:0;
+}
+
+.logo p{
+    margin-top:5px;
+    font-size:14px;
+    opacity:.9;
+}
+.action-btn:disabled{
+
+    opacity:0.5;
+
+    cursor:not-allowed;
+
+    background:#ccc;
+
+    color:#666;
+
+}
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+#todayDate{
+    background:#fff;
+    color:#1565c0;
+    padding:8px 15px;
+    border-radius:25px;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.logout-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:#d32f2f;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.logout-btn:hover{
+    background:#b71c1c;
+    transform:translateY(-2px);
+}
+=======
+
+>>>>>>> 3d65729fea05477a8f558ccf0b3569e01d58e0ce
+.info-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.label{
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+.value{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:black;
+
+}
+
+/* =========================================================
+   VARIABLES
+=========================================================*/
+
+:root{
+
+    --primary:#005baa;
+
+    --secondary:#ffb000;
+
+    --success:#1aa34a;
+
+    --danger:#d93025;
+
+    --warning:#ff9800;
+
+    --white:#ffffff;
+
+    --dark:#243447;
+
+    --light:#f7f9fb;
+
+    --border:#d8dee7;
+
+    --shadow:0 10px 25px rgba(0,0,0,.08);
+
+    --radius:14px;
+
+}
+
+
+/* =========================================================
+   HEADER
+=========================================================*/
+
+.top-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 40px;
+
+    background:linear-gradient(135deg,#005baa,#008cff);
+
+    color:#fff;
+
+    box-shadow:var(--shadow);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logo i{
+
+    font-size:45px;
+
+}
+
+.logo h1{
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.logo p{
+
+    margin-top:3px;
+
+    opacity:.9;
+
+    font-size:14px;
+
+}
+
+.header-right{
+
+    text-align:right;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+=========================================================*/
+
+.navbar{
+
+    background:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    padding:15px;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+
+}
+
+.navbar button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    background:#eef4fa;
+
+    color:#333;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.30s;
+
+}
+
+.navbar button i{
+
+    margin-right:8px;
+
+}
+
+.navbar button:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.navbar button.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+
+/* =========================================================
+   SECTION TITLE
+=========================================================*/
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+}
+
+.section-title i{
+
+    color:var(--primary);
+
+    font-size:25px;
+
+}
+
+.section-title h2{
+
+    font-size:25px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+=========================================================*/
+
+.dashboard{
+
+    width:95%;
+
+    margin:35px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+.card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.card::before{
+
+    position:absolute;
+
+    content:"";
+
+    width:100%;
+
+    height:5px;
+
+    left:0;
+
+    top:0;
+
+}
+
+.card i{
+
+    font-size:45px;
+
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+.card h2{
+
+    font-size:34px;
+
+}
+
+.blue{
+
+    border-left:7px solid var(--primary);
+
+}
+
+.blue::before{
+
+    background:var(--primary);
+
+}
+
+.blue i{
+
+    color:var(--primary);
+
+}
+
+.green{
+
+    border-left:7px solid var(--success);
+
+}
+
+.green::before{
+
+    background:var(--success);
+
+}
+
+.green i{
+
+    color:var(--success);
+
+}
+
+.orange{
+
+    border-left:7px solid var(--warning);
+
+}
+
+.orange::before{
+
+    background:var(--warning);
+
+}
+
+.orange i{
+
+    color:var(--warning);
+
+}
+
+.red{
+
+    border-left:7px solid var(--danger);
+
+}
+
+.red::before{
+
+    background:var(--danger);
+
+}
+
+.red i{
+
+    color:var(--danger);
+
+}
+
+
+/* =========================================================
+   OPENING CASH
+=========================================================*/
+
+.opening-section{
+
+    width:95%;
+
+    margin:auto;
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.opening-box{
+
+    display:grid;
+
+    grid-template-columns:2fr 2fr 1fr;
+
+    gap:18px;
+
+    align-items:end;
+
+}
+
+.opening-box label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.opening-box input{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    border:1px solid var(--border);
+
+    font-size:18px;
+
+}
+
+.opening-box button{
+
+    padding:15px;
+
+    background:var(--success);
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.30s;
+
+}
+
+.opening-box button:hover{
+
+    background:#12843b;
+
+}
+
+
+/* =========================================================
+   LIVE CASH
+=========================================================*/
+
+.cash-status{
+
+    width:95%;
+
+    margin:35px auto;
+
+}
+
+.status-box{
+
+    background:linear-gradient(135deg,#0d9448,#17bf5d);
+
+    color:#fff;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:var(--shadow);
+
+}
+
+.status-box h3{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+.status-box h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+}
+
+.status-box i{
+
+    font-size:60px;
+
+    opacity:.30;
+
+}
+
+
+/* =========================================================
+   COMMON INPUTS
+=========================================================*/
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:15px;
+
+    font-family:'Poppins',sans-serif;
+
+    transition:.30s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 8px rgba(0,91,170,.2);
+
+}
+
+button{
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+button:hover{
+
+    opacity:.95;
+
+}
+/* =========================================================
+   TRANSACTION SECTION
+=========================================================*/
+
+.transaction-section{
+
+    width:95%;
+
+    margin:35px auto;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.transaction-form{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#333;
+
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+    background:#fff;
+
+}
+
+.form-group textarea{
+
+    resize:vertical;
+
+    min-height:90px;
+
+}
+
+.full-width{
+
+    grid-column:1/-1;
+
+}
+
+
+/* =========================================================
+   SAVE BUTTON
+=========================================================*/
+
+#saveTransactions{
+
+    background:linear-gradient(135deg,#005baa,#0078d4);
+
+    color:#fff;
+
+    border:none;
+
+    padding:16px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#saveTransactions:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(0,91,170,.25);
+
+}
+
+#saveTransactions i{
+
+    margin-right:8px;
+
+}
+
+/* ===============================
+   Danger Button
+================================*/
+
+.danger-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    background:linear-gradient(135deg,#dc3545,#b02a37);
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:12px 20px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+    box-shadow:0 4px 12px rgba(220,53,69,.25);
+
+}
+
+.danger-btn:hover{
+
+    background:linear-gradient(135deg,#c82333,#991f2b);
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(220,53,69,.35);
+
+}
+
+.danger-btn:active{
+
+    transform:translateY(0);
+
+    box-shadow:0 2px 8px rgba(220,53,69,.25);
+
+}
+
+.danger-btn:focus{
+
+    outline:none;
+
+    box-shadow:0 0 0 4px rgba(220,53,69,.25);
+
+}
+
+.danger-btn:disabled{
+
+    background:#b5b5b5;
+
+    cursor:not-allowed;
+
+    box-shadow:none;
+
+    transform:none;
+
+    opacity:.7;
+
+}
+
+.danger-btn i{
+
+    font-size:16px;
+
+}
+/* =========================================================
+   SUMMARY SECTION
+=========================================================*/
+
+.summary-section{
+
+    width:95%;
+
+    margin:35px auto;
+
+}
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.summary-card{
+
+    background:#fff;
+
+    border-radius:16px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.summary-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.summary-card h4{
+
+    font-size:17px;
+
+    color:#666;
+
+    margin-bottom:12px;
+
+}
+
+.summary-card h2{
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================================================
+   SUMMARY COLORS
+=========================================================*/
+
+.withdrawal{
+
+    border-top:6px solid #d93025;
+
+}
+
+.withdrawal h2{
+
+    color:#d93025;
+
+}
+
+.deposit{
+
+    border-top:6px solid #16a34a;
+
+}
+
+.deposit h2{
+
+    color:#16a34a;
+
+}
+
+.upi{
+
+    border-top:6px solid #8e44ad;
+
+}
+
+.upi h2{
+
+    color:#8e44ad;
+
+}
+
+.charges{
+
+    border-top:6px solid #f39c12;
+
+}
+
+.charges h2{
+
+    color:#f39c12;
+
+}
+
+
+/* =========================================================
+   TRANSACTION TYPE COLORS
+=========================================================*/
+
+.withdraw-bg{
+
+    background:#fdecec;
+
+}
+
+.deposit-bg{
+
+    background:#ecfff3;
+
+}
+
+.upi-bg{
+
+    background:#f5ecff;
+
+}
+
+.cashin-bg{
+
+    background:#e9fbff;
+
+}
+
+.cashout-bg{
+
+    background:#fff4dd;
+
+}
+
+
+/* =========================================================
+   FORM VALIDATION
+=========================================================*/
+
+input.error,
+select.error,
+textarea.error{
+
+    border:2px solid #d93025;
+
+    background:#fff2f2;
+
+}
+
+.error-text{
+
+    color:#d93025;
+
+    font-size:13px;
+
+    margin-top:5px;
+
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+=========================================================*/
+
+.success-box{
+
+    background:#eafaf0;
+
+    color:#16a34a;
+
+    border-left:5px solid #16a34a;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+    font-weight:600;
+
+}
+
+
+/* =========================================================
+   WARNING MESSAGE
+=========================================================*/
+
+.warning-box{
+
+    background:#fff8e8;
+
+    color:#e67e22;
+
+    border-left:5px solid #f39c12;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+}
+
+
+/* =========================================================
+   BADGE
+=========================================================*/
+
+.badge{
+
+    display:inline-block;
+
+    padding:5px 12px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.badge-fino{
+
+    background:#d9ebff;
+
+    color:#005baa;
+
+}
+
+.badge-bom{
+
+    background:#fff2d7;
+
+    color:#9a5a00;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+=========================================================*/
+
+.btn{
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-primary{
+
+    background:#005baa;
+
+    color:#fff;
+
+}
+
+.btn-success{
+
+    background:#16a34a;
+
+    color:#fff;
+
+}
+
+.btn-danger{
+
+    background:#d93025;
+
+    color:#fff;
+
+}
+
+.btn-warning{
+
+    background:#f39c12;
+
+    color:#fff;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* =========================================================
+   CARD ANIMATION
+=========================================================*/
+
+.card,
+.summary-card,
+.transaction-section,
+.opening-section{
+
+    animation:fadeUp .5s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   LOADING SPINNER
+=========================================================*/
+
+.loader{
+
+    width:40px;
+
+    height:40px;
+
+    border:5px solid #ddd;
+
+    border-top:5px solid #005baa;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+    margin:auto;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   SPACING UTILITIES
+=========================================================*/
+
+.mt-10{margin-top:10px;}
+.mt-20{margin-top:20px;}
+.mt-30{margin-top:30px;}
+
+.mb-10{margin-bottom:10px;}
+.mb-20{margin-bottom:20px;}
+.mb-30{margin-bottom:30px;}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.text-right{
+
+    text-align:right;
+
+}
+
+.fw-bold{
+
+    font-weight:700;
+
+}
+/* =========================================================
+   PART 2C-1
+   TRANSACTION TABLE
+=========================================================*/
+
+.history-section{
+
+    width:95%;
+
+    margin:35px auto;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.table-actions{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.table-actions input{
+
+    flex:1;
+
+    min-width:250px;
+
+}
+
+.table-actions button{
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#fff;
+
+    transition:.3s;
+
+}
+
+#printReport{
+
+    background:#005baa;
+
+}
+
+#printReport:hover{
+
+    background:#004b8d;
+
+}
+
+#clearTransactions{
+
+    background:#d93025;
+
+}
+
+#clearTransactions:hover{
+
+    background:#b71c1c;
+
+}
+
+
+/* =========================================================
+   TABLE
+=========================================================*/
+
+.table-responsive{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:1200px;
+
+}
+
+thead{
+
+    background:#005baa;
+
+    color:#fff;
+
+}
+
+thead th{
+
+    padding:16px;
+
+    text-align:center;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+tbody td{
+
+    padding:14px;
+
+    border-bottom:1px solid #e7e7e7;
+
+    text-align:center;
+
+    font-size:14px;
+
+}
+
+tbody tr:nth-child(even){
+
+    background:#f8fbff;
+
+}
+
+tbody tr:hover{
+
+    background:#eef6ff;
+
+}
+
+.amount-credit{
+
+    color:#16a34a;
+
+    font-weight:700;
+
+}
+
+.amount-debit{
+
+    color:#d93025;
+
+    font-weight:700;
+
+}
+
+.balance{
+
+    font-weight:700;
+
+    color:#005baa;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+=========================================================*/
+
+.action-btn{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    color:#fff;
+
+    margin:2px;
+
+    transition:.3s;
+
+}
+
+.edit-btn{
+
+    background:#ff9800;
+
+}
+
+.edit-btn:hover{
+
+    background:#e68900;
+
+}
+
+.delete-btn{
+
+    background:#d93025;
+
+}
+
+.delete-btn:hover{
+
+    background:#b71c1c;
+
+}
+
+
+/* =========================================================
+   END OF DAY SUMMARY
+=========================================================*/
+
+.eod-section{
+
+    width:95%;
+
+    margin:35px auto;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+/* =========================================================
+   MODAL
+=========================================================*/
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    z-index:999;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+.modal-content{
+
+    width:100%;
+
+    max-width:650px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    animation:modalOpen .35s ease;
+
+}
+
+@keyframes modalOpen{
+
+    from{
+
+        transform:translateY(-30px);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+.modal-header{
+
+    background:#005baa;
+
+    color:#fff;
+
+    padding:18px 25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.modal-header h2{
+
+    font-size:22px;
+
+}
+
+.close{
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
+
+.modal-body{
+
+    padding:25px;
+
+}
+
+.modal-body label{
+
+    display:block;
+
+    margin-top:15px;
+
+    margin-bottom:6px;
+
+    font-weight:600;
+
+}
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    padding:20px 25px;
+
+    background:#f5f7fa;
+
+}
+
+#updateTransaction{
+
+    background:#16a34a;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+#cancelEdit{
+
+    background:#d93025;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+
+/* =========================================================
+   FOOTER
+=========================================================*/
+
+footer{
+
+    margin-top:40px;
+
+    background:#243447;
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:30px 20px;
+
+}
+
+.footer-content h3{
+
+    margin-bottom:10px;
+
+    font-size:24px;
+
+}
+
+.footer-content p{
+
+    margin:6px 0;
+
+    opacity:.9;
+
+}
+
+/* =========================================================
+   PART 2C-2A
+   RESPONSIVE DESIGN
+=========================================================*/
+
+
+/* =========================================================
+   LARGE DESKTOP
+=========================================================*/
+
+@media (max-width:1200px){
+
+    .top-header{
+
+        padding:20px 25px;
+
+    }
+
+
+    .logo h1{
+
+        font-size:24px;
+
+    }
+
+
+    .dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .opening-box{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+
+    .opening-box button{
+
+        grid-column:1/-1;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   TABLET VIEW
+=========================================================*/
+
+@media (max-width:992px){
+
+
+    .top-header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:15px;
+
+    }
+
+
+    .header-right{
+
+        text-align:center;
+
+    }
+
+
+    .navbar{
+
+        flex-wrap:wrap;
+
+    }
+
+
+    .navbar button{
+
+        padding:12px 18px;
+
+    }
+
+
+    .dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .transaction-form{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .summary-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+    .status-box h1{
+
+        font-size:36px;
+
+    }
+
+
+}
+
+
+
+/* =========================================================
+   MOBILE VIEW
+=========================================================*/
+
+@media (max-width:768px){
+
+
+    body{
+
+        font-size:14px;
+
+    }
+
+
+
+    .top-header{
+
+        padding:18px 15px;
+
+    }
+
+
+
+    .logo{
+
+        flex-direction:column;
+
+        gap:8px;
+
+    }
+
+
+
+    .logo i{
+
+        font-size:38px;
+
+    }
+
+
+
+    .logo h1{
+
+        font-size:20px;
+
+    }
+
+
+
+    .logo p{
+
+        font-size:12px;
+
+    }
+
+
+
+    .navbar{
+
+        display:grid;
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:10px;
+
+        padding:12px;
+
+    }
+
+
+
+    .navbar button{
+
+        width:100%;
+
+        font-size:13px;
+
+        padding:12px 8px;
+
+    }
+
+
+
+    .dashboard{
+
+        width:92%;
+
+        grid-template-columns:1fr;
+
+        gap:15px;
+
+    }
+
+
+
+    .card{
+
+        padding:22px;
+
+    }
+
+
+
+    .card h2{
+
+        font-size:28px;
+
+    }
+
+
+
+    .opening-section,
+    .transaction-section,
+    .history-section,
+    .eod-section{
+
+        width:92%;
+
+        padding:20px;
+
+    }
+
+
+
+    .opening-box{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+    .transaction-form{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+    .full-width{
+
+        grid-column:auto;
+
+    }
+
+
+
+    .summary-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+    .status-box{
+
+        padding:22px;
+
+    }
+
+
+
+    .status-box h1{
+
+        font-size:30px;
+
+    }
+
+
+
+    .status-box i{
+
+        font-size:45px;
+
+    }
+
+
+
+    .table-actions{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+
+
+    .table-actions button{
+
+        width:100%;
+
+    }
+
+
+
+    .modal-content{
+
+        max-height:90vh;
+
+        overflow-y:auto;
+
+    }
+
+
+
+    .modal-footer{
+
+        flex-direction:column;
+
+    }
+
+
+
+    .modal-footer button{
+
+        width:100%;
+
+    }
+
+
+
+    footer{
+
+        padding:25px 15px;
+
+    }
+
+
+}
+
+
+
+/* =========================================================
+   SMALL MOBILE
+=========================================================*/
+
+@media (max-width:480px){
+
+
+
+    .navbar{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+    .section-title h2{
+
+        font-size:20px;
+
+    }
+
+
+
+    .card i{
+
+        font-size:35px;
+
+    }
+
+
+
+    .card h3{
+
+        font-size:16px;
+
+    }
+
+
+
+    .summary-card h2{
+
+        font-size:26px;
+
+    }
+
+
+
+    input,
+    select,
+    textarea{
+
+        padding:12px;
+
+        font-size:14px;
+
+    }
+
+
+
+    #saveTransaction{
+
+        font-size:15px;
+
+        padding:14px;
+
+    }
+
+
+
+    .footer-content h3{
+
+        font-size:20px;
+
+    }
+
+
+}
+
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+=========================================================*/
+
+@media (max-height:500px) and (orientation:landscape){
+
+
+    .top-header{
+
+        flex-direction:row;
+
+    }
+
+
+    .dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+
+}
+
+/* =========================================================
+   PART 2C-2B
+   PRINT + DARK MODE + FINAL POLISH
+=========================================================*/
+
+
+/* =========================================================
+   PRINT REPORT STYLE
+=========================================================*/
+
+@media print {
+
+
+    body{
+
+        background:#fff;
+
+        color:#000;
+
+    }
+
+
+    .top-header{
+
+        background:#fff !important;
+
+        color:#000;
+
+        box-shadow:none;
+
+        border-bottom:2px solid #000;
+
+    }
+
+
+    .navbar,
+    .opening-section,
+    .transaction-section,
+    .table-actions,
+    .modal,
+    footer,
+    button{
+
+        display:none !important;
+
+    }
+
+
+    .dashboard{
+
+        display:grid;
+
+        grid-template-columns:repeat(4,1fr);
+
+        gap:10px;
+
+    }
+
+
+    .card,
+    .summary-card,
+    .history-section,
+    .eod-section{
+
+        box-shadow:none;
+
+        border:1px solid #000;
+
+    }
+
+
+    .history-section,
+    .eod-section{
+
+        width:100%;
+
+        margin:10px 0;
+
+    }
+
+
+    table{
+
+        min-width:100%;
+
+        border:1px solid #000;
+
+    }
+
+
+    th{
+
+        background:#eee !important;
+
+        color:#000 !important;
+
+    }
+
+
+    td,
+    th{
+
+        border:1px solid #000;
+
+        padding:8px;
+
+    }
+
+
+    .status-box{
+
+        background:#fff !important;
+
+        color:#000;
+
+        border:2px solid #000;
+
+    }
+
+
+}
+
+
+
+/* =========================================================
+   DARK MODE
+=========================================================*/
+
+
+.dark-mode{
+
+
+    background:#121212;
+
+    color:#eee;
+
+}
+
+
+
+.dark-mode .top-header{
+
+    background:#1e1e1e;
+
+}
+
+
+
+.dark-mode .navbar,
+.dark-mode .card,
+.dark-mode .opening-section,
+.dark-mode .transaction-section,
+.dark-mode .history-section,
+.dark-mode .eod-section,
+.dark-mode .summary-card{
+
+    background:#1f1f1f;
+
+    color:#eee;
+
+}
+
+
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea{
+
+    background:#2a2a2a;
+
+    color:#fff;
+
+    border-color:#444;
+
+}
+
+
+
+.dark-mode table{
+
+    color:#fff;
+
+}
+
+
+
+.dark-mode tbody tr:nth-child(even){
+
+    background:#292929;
+
+}
+
+
+
+.dark-mode tbody tr:hover{
+
+    background:#333;
+
+}
+
+
+
+.dark-mode .section-title h2,
+.dark-mode label{
+
+    color:#fff;
+
+}
+
+
+
+.dark-mode footer{
+
+    background:#000;
+
+}
+
+
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+=========================================================*/
+
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+    height:10px;
+
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:#eef3f8;
+
+}
+
+
+::-webkit-scrollbar-thumb{
+
+    background:#005baa;
+
+    border-radius:10px;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#003f78;
+
+}
+
+
+
+/* =========================================================
+   EXTRA UTILITY CLASSES
+=========================================================*/
+
+
+.d-none{
+
+    display:none !important;
+
+}
+
+
+.d-flex{
+
+    display:flex;
+
+}
+
+
+.align-center{
+
+    align-items:center;
+
+}
+
+
+.justify-center{
+
+    justify-content:center;
+
+}
+
+
+.justify-between{
+
+    justify-content:space-between;
+
+}
+
+
+
+.w-100{
+
+    width:100%;
+
+}
+
+
+
+.pointer{
+
+    cursor:pointer;
+
+}
+
+
+
+.rounded{
+
+    border-radius:12px;
+
+}
+
+
+
+.shadow{
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.text-primary{
+
+    color:var(--primary);
+
+}
+
+
+
+.text-success{
+
+    color:var(--success);
+
+}
+
+
+
+.text-danger{
+
+    color:var(--danger);
+
+}
+
+
+
+.text-warning{
+
+    color:var(--warning);
+
+}
+
+
+
+/* =========================================================
+   SMOOTH TRANSITIONS
+=========================================================*/
+
+
+*{
+
+    transition:
+
+    background-color .25s ease,
+
+    color .25s ease,
+
+    border-color .25s ease;
+
+}
+
+
+
+/* =========================================================
+   APPLICATION LOADING SCREEN
+=========================================================*/
+
+
+.app-loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+
+
+.app-loader .spinner{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    border:6px solid #ddd;
+
+    border-top-color:#005baa;
+
+    animation:loaderRotate 1s linear infinite;
+
+}
+
+
+
+@keyframes loaderRotate{
+
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+
+}
+
+
+/* =========================================================
+   END OF STYLE.CSS
+=========================================================*/
+
+/* ===============================
+   PROFESSIONAL ERROR MESSAGE
+================================*/
+
+
+.error-box{
+
+    display:none;
+
+    background:#fff0f0;
+
+    color:#c62828;
+
+    border-left:5px solid #d93025;
+
+    padding:15px 20px;
+
+    margin-bottom:20px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    animation:shake .3s;
+
+}
+
+
+.error-box ul{
+
+    margin-left:20px;
+
+}
+
+
+.input-error{
+
+    border:2px solid #d93025 !important;
+
+    background:#fff5f5;
+
+}
+
+
+@keyframes shake{
+
+    0%{
+
+        transform:translateX(0);
+
+    }
+
+    25%{
+
+        transform:translateX(-5px);
+
+    }
+
+    50%{
+
+        transform:translateX(5px);
+
+    }
+
+    100%{
+
+        transform:translateX(0);
+
+    }
+
+}
